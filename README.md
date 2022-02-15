@@ -2,7 +2,8 @@
 # An Academic Grade Tracker
 
 A react-redux based seamless web application.
-User can keep track of their academic courses and grades. User can add semesters, courses.
+User can keep track of their academic courses and grades. User can add semesters and new courses.
+Also there is a CGPA calculator which can be used to calculate cgpa.
 
 ## Built With
 
