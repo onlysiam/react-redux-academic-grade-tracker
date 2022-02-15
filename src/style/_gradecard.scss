@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 11rem;
+  height: 5rem;
+  padding: 1rem;
+  margin: 0.5rem 0.5rem;
+  border-radius: 5px;
+  background: linear-gradient(to left, rgb(219, 253, 255), rgb(245, 253, 255));
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+  cursor: pointer;
+  .fRow {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 5px 0px;
+      color: black;
+    }
+  }
+  p {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 0px;
+    color: rgba(71, 71, 71, 0.637);
+  }
+}
+@media screen and (max-width: 500px) {
+  .card {
+    margin: 0rem 0.5rem;
+  }
+}

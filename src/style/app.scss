@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Inter", sans-serif;
+  background: #6cdaeb70;
+
+  // background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+}
+
+// @import "./nav";
+// @import "./calculator";
+// @import "./course";
+// @import "./login";
+// @import "./semester";
+// @import "./settings";
+// @import "./signup";
+// @import "./classresult";
+// @import "./result";

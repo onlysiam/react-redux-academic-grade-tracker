@@ -1,0 +1,123 @@
+.courseRender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .courseContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20rem;
+    height: 8rem;
+    padding: 1rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(
+      to left,
+      rgb(219, 253, 255),
+      rgb(245, 253, 255)
+    );
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    .courseSummary {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 5px 0px;
+      }
+      p {
+        color: rgba(0, 0, 0, 0.644);
+      }
+    }
+    .menu {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 20px;
+      top: 0.5rem;
+      right: 0.5rem;
+      cursor: pointer;
+      img {
+        height: 20px;
+      }
+    }
+    .inActive {
+      left: 0;
+      position: absolute;
+      width: 20rem;
+      height: 8rem;
+      border-radius: 5px;
+      background-color: rgba(133, 133, 133, 0.637);
+    }
+  }
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+@media screen and (max-width: 670px) {
+  .courseRender {
+    .courseContainer {
+      width: 17rem;
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .courseRender {
+    .courseContainer {
+      width: 15rem;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .courseRender {
+    .courseContainer {
+      width: 80vw;
+      height: 15vh;
+      margin: 0.1rem;
+      padding-right: 3rem;
+      border-radius: 2px;
+      justify-content: space-between;
+      .courseSummary {
+        h1 {
+          font-size: 1rem;
+          font-weight: 600;
+          padding: 5px 0px;
+        }
+      }
+      .inActive {
+        left: 0;
+        position: absolute;
+        width: 80vw;
+        height: 15vh;
+        border-radius: 2px;
+        background-color: rgba(133, 133, 133, 0.637);
+      }
+    }
+  }
+}
+@media screen and (max-width: 390px) {
+  .courseRender {
+    .courseContainer {
+      width: 24rem;
+      height: 5rem;
+      padding: 1rem;
+      justify-content: space-around;
+      .courseSummary {
+        h1 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          padding: 5px 0px;
+        }
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+}

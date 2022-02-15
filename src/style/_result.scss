@@ -1,0 +1,284 @@
+.result-wrapper {
+  min-height: 75vh;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(61, 61, 61);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .calculator-body {
+    border-radius: 1rem;
+    padding-bottom: 3.1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 24rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    background: linear-gradient(
+      to right bottom,
+      rgba(199, 242, 248, 0.3),
+      rgba(255, 255, 255, 0.7)
+    );
+    backdrop-filter: blur(2rem);
+    .pCgpaCredit {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 10px;
+      .pCredit {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .pCgpa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .classcgc {
+      padding: 0px 15px;
+      .courses {
+        max-height: 25rem;
+        overflow-y: scroll;
+      }
+      .classTags {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          border: 2px solid rgba(113, 215, 243, 0.945);
+          border-radius: 2rem;
+          padding: 5px;
+          font-size: 1rem;
+        }
+      }
+    }
+    .finalCgpa {
+      padding-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      p {
+        font-size: 1.2rem;
+        padding-top: 10px;
+      }
+    }
+  }
+  .calculateBtn {
+    margin-top: -3rem;
+    margin-left: 19rem;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: Bold;
+    color: rgb(61, 61, 61);
+    border: 1px solid rgba(67, 168, 226, 0.568);
+    background: rgba(113, 215, 243, 0.945);
+    outline: none;
+    box-shadow: 3px 3px 5px rgb(71, 71, 71);
+    cursor: pointer;
+    transition: 0.5s ease;
+    background: rgba(113, 215, 243, 0.308);
+    backdrop-filter: blur(2rem);
+
+    box-shadow: 3px 3px 5px rgba(71, 71, 71, 0.3);
+    z-index: 10;
+  }
+  .calculateBtn:hover {
+    color: white;
+    background: rgba(65, 122, 138, 0.945);
+
+    box-shadow: none;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .result-wrapper {
+    min-height: 90vh;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    .calculator-body {
+      border-radius: 1rem;
+      padding-bottom: 3.1rem;
+      width: 24rem;
+
+      .pCgpaCredit {
+        padding: 10px 10px;
+
+        p {
+          font-size: 1.1rem;
+        }
+      }
+
+      .classcgc {
+        padding: 0px 15px;
+        .courses {
+          max-height: 30rem;
+          overflow-y: scroll;
+        }
+        .classTags {
+          p {
+            border-radius: 2rem;
+            padding: 5px;
+            font-size: 1rem;
+          }
+        }
+      }
+      .finalCgpa {
+        padding-top: 0.5rem;
+
+        p {
+          font-size: 1.2rem;
+          padding-top: 10px;
+        }
+      }
+    }
+    .calculateBtn {
+      margin-top: -3rem;
+      margin-left: 19rem;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-weight: Bold;
+    }
+  }
+}
+@media screen and (max-width: 430px) {
+  .result-wrapper {
+    min-height: 75vh;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+
+    .calculator-body {
+      border-radius: 1rem;
+      padding-bottom: 3.1rem;
+
+      width: 24rem;
+
+      .pCgpaCredit {
+        padding: 10px 10px;
+
+        p {
+          font-size: 1.1rem;
+        }
+      }
+
+      .classcgc {
+        padding: 0px 15px;
+        .courses {
+          margin-top: 0.5rem;
+          max-height: 22rem;
+          overflow-y: scroll;
+        }
+        .classTags {
+          p {
+            border-radius: 2rem;
+            padding: 5px;
+            font-size: 1rem;
+          }
+        }
+      }
+      .finalCgpa {
+        padding-top: 0.5rem;
+
+        p {
+          font-size: 1.2rem;
+          padding-top: 10px;
+        }
+      }
+    }
+    .calculateBtn {
+      margin-top: -3rem;
+      margin-left: 19rem;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-weight: Bold;
+    }
+  }
+}
+@media screen and (max-width: 390px) {
+  .result-wrapper {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    .calculator-body {
+      border-radius: 0.5rem;
+      padding-bottom: 3.1rem;
+      width: 20rem;
+
+      .pCgpaCredit {
+        padding: 10px 10px;
+
+        p {
+          font-size: 0.9rem;
+        }
+      }
+
+      .classcgc {
+        padding: 0px 15px;
+        .courses {
+          margin-top: 0.5rem;
+          max-height: 18rem;
+          overflow-y: scroll;
+        }
+        .classTags {
+          p {
+            border-radius: 2rem;
+            padding: 5px;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      .finalCgpa {
+        padding-top: 0.5rem;
+
+        p {
+          font-size: 1.2rem;
+          padding-top: 10px;
+        }
+      }
+    }
+    .calculateBtn {
+      margin-top: -3rem;
+      margin-left: 17rem;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      font-weight: Bold;
+    }
+  }
+}

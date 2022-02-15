@@ -1,0 +1,114 @@
+.addSemester {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  overflow: hidden;
+  form {
+    position: relative;
+    display: flex;
+    padding: 15px;
+    margin-top: -8rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    background: rgb(245, 245, 245);
+    height: 33vh;
+    width: 30rem;
+    border-radius: 10px;
+
+    h1 {
+      font-size: 1.5rem;
+      top: 0;
+      left: 0;
+      padding-bottom: 20px;
+    }
+    .semesterName {
+      input {
+        width: 20rem;
+        border: none;
+        background: transparent;
+        border-radius: 0px;
+        font-size: 1.2rem;
+        padding-bottom: 5px;
+        border-bottom: 1px solid black;
+        transition: 0.2s;
+      }
+      input:focus {
+        outline: none;
+        border-bottom: 1px solid rgba(67, 242, 255, 0.671);
+      }
+    }
+    .btns {
+      display: flex;
+      button {
+        width: 5rem;
+        height: 2rem;
+        font-size: 1.2rem;
+        font-weight: Bold;
+        margin-right: 10px;
+        color: rgb(61, 61, 61);
+        border: 1px solid rgba(67, 168, 226, 0.568);
+        border-radius: 10px;
+        background: rgba(215, 245, 253, 0.945);
+        cursor: pointer;
+        transition: 0.5s ease;
+        outline: none;
+      }
+    }
+    button:hover {
+      color: white;
+      background: rgba(65, 122, 138, 0.945);
+    }
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .addSemester {
+    form {
+      width: 20rem;
+      .semesterName {
+        input {
+          width: 16rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 670px) {
+  .addSemester {
+    form {
+      width: 16rem;
+      .semesterName {
+        input {
+          width: 14rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .addSemester {
+    form {
+      h1 {
+        font-size: 1.2rem;
+      }
+      .semesterName {
+        input {
+          margin-top: 1rem;
+          width: 12rem;
+        }
+      }
+      button {
+        width: 5rem;
+        height: 2rem;
+        margin-top: 3rem;
+        margin-left: 5rem;
+        font-size: 1.2rem;
+
+        border-radius: 10px;
+      }
+    }
+  }
+}

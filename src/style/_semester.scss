@@ -1,0 +1,116 @@
+.link {
+  text-decoration: none;
+
+  .semester {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20rem;
+    height: 10rem;
+    padding: 1rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 10px;
+    background: linear-gradient(
+      to left,
+      rgb(219, 253, 255),
+      rgb(245, 253, 255)
+    );
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    cursor: pointer;
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 5px 0px;
+      color: black;
+    }
+    .semesterName {
+      display: flex;
+      flex-direction: column;
+      .courseName {
+        display: flex;
+        width: 14rem;
+        overflow: hidden;
+        p {
+          font-size: 0.8rem;
+          padding-right: 5px;
+          color: rgba(0, 0, 0, 0.644);
+        }
+      }
+      h1 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 5px 0px;
+        color: black;
+      }
+    }
+
+    .menu {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 20px;
+      top: 0.5rem;
+      right: 0.5rem;
+      cursor: pointer;
+      img {
+        height: 20px;
+      }
+    }
+  }
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+@media screen and (max-width: 670px) {
+  .link {
+    .semester {
+      width: 15rem;
+      h2 {
+        font-size: 0.8rem;
+      }
+      .semesterName {
+        .courseName {
+          width: 10rem;
+          p {
+            font-size: 0.6rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+      h1 {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .link {
+    .semester {
+      width: 80vw;
+      height: 15vh;
+      margin: 0.1rem;
+      border-radius: 2px;
+      h2 {
+        font-size: 0.8rem;
+      }
+      .semesterName {
+        .courseName {
+          width: 10rem;
+          p {
+            font-size: 0.6rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+      h1 {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

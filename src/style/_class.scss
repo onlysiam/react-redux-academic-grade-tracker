@@ -1,0 +1,107 @@
+.class-body {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid rgba(0, 185, 185, 0.377);
+  input {
+    margin-right: 0.6rem;
+    text-align: center;
+    height: 2rem;
+    padding: 2px;
+    width: 5rem;
+    font-size: 1rem;
+    border: none;
+    background: transparent;
+  }
+  select {
+    margin-left: -1.8rem;
+    height: 2rem;
+    padding: 5px;
+    width: 3.5rem;
+    font-size: 1rem;
+    border: none;
+    background: transparent;
+  }
+  .select {
+    color: rgb(167, 167, 167);
+  }
+  .active-select {
+    color: black;
+  }
+  .firstChild {
+    color: rgb(167, 167, 167);
+  }
+  .active-firstChild {
+    display: none;
+  }
+  .courseNameInput {
+    width: 7rem;
+  }
+  select {
+    -webkit-appearance: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .class-body {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    input {
+      margin-right: 0.6rem;
+      height: 2rem;
+      padding: 2px;
+      width: 5rem;
+      font-size: 1rem;
+    }
+    select {
+      margin-left: -1.8rem;
+      height: 2rem;
+      padding: 5px;
+      width: 3.5rem;
+      font-size: 1rem;
+    }
+
+    .courseNameInput {
+      width: 7rem;
+    }
+  }
+}
+@media screen and (max-width: 430px) {
+  .class-body {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    input {
+      margin-right: 0.6rem;
+      height: 2rem;
+      padding: 2px;
+      width: 5rem;
+      font-size: 1rem;
+    }
+    select {
+      margin-left: -1.8rem;
+      height: 2rem;
+      padding: 5px;
+      width: 3.5rem;
+      font-size: 1rem;
+    }
+
+    .courseNameInput {
+      width: 7rem;
+    }
+  }
+}
+@media screen and (max-width: 390px) {
+  .class-body {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    input {
+      margin-right: 0rem;
+    }
+    select {
+      margin-left: -0.6rem;
+    }
+    .courseNameInput {
+      margin-left: -1rem;
+    }
+  }
+}
