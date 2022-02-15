@@ -25,6 +25,7 @@ const Courses = ({
 }) => {
   //redux-data
   const dispatch = useDispatch();
+
   //fetching data
   const semestersList = useSelector((state) => state.entities.semesters.list);
   const loader = useSelector((state) => state.loader.courseWindow);
