@@ -13,7 +13,7 @@ Also there is a CGPA calculator which can be used to calculate cgpa.
 
 **State Management:** Redux
 
-**Database** MySQL(innoDB)
+**Database:** MySQL(innoDB)
 
 ## Demo
 
