@@ -1,0 +1,185 @@
+.cgpa {
+  width: 40vw;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .circle {
+    position: relative;
+    top: -3rem;
+    left: 0;
+    .semesterCgpa {
+      position: absolute;
+      display: flex;
+      justify-content: stretch;
+      align-items: center;
+      flex-direction: column;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 60%;
+      background: white;
+      z-index: 10;
+      h1 {
+        padding-top: 2rem;
+        font-size: 1.2rem;
+      }
+      p {
+        text-align: center;
+        width: 5.5rem;
+        font-size: 0.9rem;
+      }
+      .cgpaLimit {
+        display: flex;
+        width: 7rem;
+        p {
+          padding-top: 0.8rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+    svg {
+      position: absolute;
+      top: -0.5rem;
+      right: -8.5rem;
+      height: 9rem;
+      padding: 1rem;
+      z-index: 10;
+      overflow: visible;
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: rotate(135deg) scaleX(-1);
+      transition: 2s;
+      #circle {
+        transition: 2s;
+      }
+    }
+  }
+
+  .creditInfoCard {
+    display: flex;
+    justify-content: space-between;
+    width: 15rem;
+    height: 5rem;
+    padding: 1rem;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    background: linear-gradient(
+      to left,
+      rgb(219, 253, 255),
+      rgb(245, 253, 255)
+    );
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    cursor: pointer;
+    h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 5px 0px;
+      color: black;
+    }
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .cgpa {
+    flex-direction: column;
+    align-items: flex-start;
+    .circle {
+      top: -1rem;
+    }
+    .creditInfoCard {
+      margin-top: 7.5rem;
+    }
+  }
+}
+@media screen and (max-width: 568px) {
+  .cgpa {
+    .creditInfoCard {
+      width: 13rem;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .cgpa {
+    width: 40vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .circle {
+      position: absolute;
+      margin-top: -8.6rem;
+      top: 0;
+      right: 0;
+      .semesterCgpa {
+        position: absolute;
+        display: flex;
+        justify-content: stretch;
+        align-items: center;
+        flex-direction: column;
+        top: 9rem;
+        right: 9rem;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 60%;
+        background: white;
+        z-index: 10;
+        h1 {
+          padding-top: 2rem;
+          font-size: 1.2rem;
+        }
+        p {
+          text-align: center;
+          width: 5.5rem;
+          font-size: 0.9rem;
+        }
+        .cgpaLimit {
+          display: flex;
+          width: 7rem;
+          p {
+            padding-top: 0.8rem;
+            font-size: 0.7rem;
+          }
+        }
+      }
+      svg {
+        position: absolute;
+        top: 8.5rem;
+        right: 8.5rem;
+        height: 9rem;
+        padding: 1rem;
+        z-index: 10;
+        overflow: visible;
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: rotate(135deg) scaleX(-1);
+        transition: 2s;
+        #circle {
+          transition: 2s;
+        }
+      }
+    }
+    .creditInfoCard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 15rem;
+      height: 5rem;
+      padding: 1rem;
+      margin: 1.5rem 1rem 0.5rem 10rem;
+      border-radius: 5px;
+      background: linear-gradient(
+        to left,
+        rgb(219, 253, 255),
+        rgb(245, 253, 255)
+      );
+      box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+      cursor: pointer;
+      h1 {
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 5px 0px;
+        color: black;
+      }
+    }
+  }
+}

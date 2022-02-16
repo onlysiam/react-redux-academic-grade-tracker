@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 //animation
-import { motion } from "framer-motion";
-import { cgpaCircleAnimation, addCourseAnimation } from "../../animation";
+
 import "../../style/_courses.scss";
 import Course from "./Course";
 //redux
@@ -20,7 +19,6 @@ const Courses = ({
   allCourses,
   pathId,
   pathIdindex,
-  isLoading,
   gradeCount,
 }) => {
   //redux-data
