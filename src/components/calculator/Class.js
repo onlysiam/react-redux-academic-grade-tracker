@@ -11,7 +11,6 @@ const Class = ({ id, defaultGradeWeight }) => {
   //states
   let mapCheck = 1;
   let courseName = "Class" + id;
-  const [checkLength, setCheckLength] = useState("");
 
   const [checkCourseInput, setCheckCourseInput] = useState("changed");
   const [checkGradeInput, setCheckGradeInput] = useState("false");
@@ -33,7 +32,6 @@ const Class = ({ id, defaultGradeWeight }) => {
   const inputHideHandlerCredit = (e) => {
     setCredit(e.target.value);
     setCheckCreditInput("changed");
-    setCheckLength("1");
   };
   //useEffect
 
