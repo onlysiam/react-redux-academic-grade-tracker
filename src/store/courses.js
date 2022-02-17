@@ -49,7 +49,8 @@ const slice = createSlice({
       const index = courses.list.findIndex(
         (course) => course.course_id === action.payload
       );
-      if (index > 0) courses.list[index].active = !courses.list[index].active;
+      console.log(courses.list[index]);
+      if (index >= 0) courses.list[index].active = !courses.list[index].active;
     },
 
     courseGradeCount: (courses, action) => {

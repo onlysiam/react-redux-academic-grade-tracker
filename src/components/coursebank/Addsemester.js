@@ -8,7 +8,7 @@ import { addCourseAnimation } from "../../animation";
 import { useSelector, useDispatch } from "react-redux";
 import { addsemester, loadsemesters } from "../../store/semesters";
 import { semesterWindowToggle } from "../../store/semesterWindow";
-const Addsemester = ({ addCourse, setaddCourse }) => {
+const Addsemester = ({ username }) => {
   const dispatch = useDispatch();
 
   const inputElement = useRef(null);
@@ -26,7 +26,7 @@ const Addsemester = ({ addCourse, setaddCourse }) => {
   };
   const addSemesterHandler = (e) => {
     e.preventDefault();
-    dispatch(addsemester({ semester, name: "siam" }));
+    dispatch(addsemester({ semester, username }));
     dispatch(semesterWindowToggle());
   };
   const cancelAddSemesterHandler = (e) => {

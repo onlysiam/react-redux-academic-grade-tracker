@@ -1,18 +1,13 @@
 import { React, useState, useEffect } from "react";
 import "../../style/_class.scss";
 import { v4 as uuid } from "uuid";
-const Class = ({
-  calculatorInput,
-  setCalculatorInput,
-  id,
-  defaultGradeWeight,
-  calculatorCgpaExists,
-  setCalculatorCgpaExists,
-  resultPublished,
-  setResultPublished,
-  checkReload,
-  setCheckReload,
-}) => {
+//redux
+import { useSelector, useDispatch } from "react-redux";
+//reducers
+import { courseAdded, resultAdded } from "../../store/calculator";
+
+const Class = ({ id, defaultGradeWeight }) => {
+  const dispatch = useDispatch();
   //states
   let mapCheck = 1;
   let courseName = "Class" + id;
@@ -41,134 +36,31 @@ const Class = ({
     setCheckLength("1");
   };
   //useEffect
-  useEffect(() => {
-    const gradeInputLS = localStorage.getItem("gradeInput" + id);
-    const creditInputLS = localStorage.getItem("creditInput" + id);
-    const courseLS = localStorage.getItem("course" + id);
-    const gradeLS = localStorage.getItem("grade" + id);
-    const gradeLetterLS = localStorage.getItem("gradeLetter" + id);
-    const creditLS = localStorage.getItem("credit" + id);
-    if (courseLS) {
-      setCourse(JSON.parse(courseLS));
-      setGrade(JSON.parse(gradeLS));
-      setGradeLetter(JSON.parse(gradeLetterLS));
-      setCredit(JSON.parse(creditLS));
-
-      setCheckGradeInput(JSON.parse(gradeInputLS));
-      setCheckCreditInput(JSON.parse(creditInputLS));
-    }
-    // if (calculatorInfo) {
-    //   const calculatorInfo = localStorage.getItem("calculatorInfo");
-    //   if (!calculatorCgpaExists || resultPublished) {
-    //     setCalculatorInput(JSON.parse(calculatorInfo));
-    //     setCheckCalculatorInput(true);
-    //     setResultPublished(false);
-    //   }
-    // }
-  }, []);
 
   useEffect(() => {
-    localStorage.setItem("gradeInput" + id, JSON.stringify(checkGradeInput));
-    localStorage.setItem("creditInput" + id, JSON.stringify(checkCreditInput));
-
-    localStorage.setItem("course" + id, JSON.stringify(course));
-    localStorage.setItem("grade" + id, JSON.stringify(grade));
-    localStorage.setItem("gradeLetter" + id, JSON.stringify(gradeLetter));
-    localStorage.setItem("credit" + id, JSON.stringify(credit));
-    if (checkReload) {
-      calculatorInput.map((count, i) => {
-        if (count.id === id) {
-          count.id = id;
-          count.grade = grade;
-          count.gradeLetter = gradeLetter;
-          count.course = course;
-          count.credit = credit;
+    if (defaultGradeWeight) {
+      defaultGradeWeight.map((gradeweight, i) => {
+        if (gradeweight.grade_name === grade) {
+          setGradeLetter(gradeweight.grade_point);
         }
       });
     }
-  });
-  useEffect(() => {
-    defaultGradeWeight.map((gradeweight, i) => {
-      if (gradeweight.name === grade) {
-        setGradeLetter(gradeweight.value);
-      }
-    });
   }, [grade]);
   useEffect(() => {
     if (
       checkCourseInput === "changed" &&
       checkGradeInput === "changed" &&
-      checkCreditInput === "changed" &&
-      !checkReload
-    ) {
-      setCalculatorCgpaExists(false);
-      if (calculatorInput.length === 0) {
-        if (course.length === 0) {
-          setCalculatorInput([
-            {
-              id: id,
-              grade: grade,
-              gradeLetter: gradeLetter,
-              course: courseName,
-              credit: credit,
-            },
-          ]);
-        } else {
-          setCalculatorInput([
-            {
-              id: id,
-              grade: grade,
-              gradeLetter: gradeLetter,
-              course: course,
-              credit: credit,
-            },
-          ]);
-        }
-      }
-      if (calculatorInput.length !== 0) {
-        if (course.length === 0) {
-          // setCalculatorInput(calculatorInput.filter((state) => state.id !== id));
-          setCalculatorInput([
-            ...calculatorInput,
-            {
-              id: id,
-              grade: grade,
-              gradeLetter: gradeLetter,
-              course: courseName,
-              credit: credit,
-            },
-          ]);
-        } else {
-          calculatorInput.map((count, i) => {
-            if (count.id === id) {
-              count.id = id;
-              count.grade = grade;
-              count.gradeLetter = gradeLetter;
-              count.course = course;
-              count.credit = credit;
-              mapCheck = 0;
-            }
-          });
-
-          if (mapCheck === 1) {
-            setCalculatorInput([
-              ...calculatorInput,
-              {
-                id: id,
-                grade: grade,
-                gradeLetter: gradeLetter,
-                course: course,
-                credit: credit,
-              },
-            ]);
-            mapCheck = 0;
-          } else {
-            return;
-          }
-          // setCalculatorInput(calculatorInput.filter((state) => state.id !== id));
-        }
-      }
-    }
+      checkCreditInput === "changed"
+    )
+      dispatch(
+        courseAdded({
+          id,
+          grade,
+          gradeLetter,
+          courseName,
+          credit,
+        })
+      );
   }, [course, credit, grade]);
 
   return (

@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "../store/users";
-import { navAnimation } from "../animation";
 //styled
 import styled from "styled-components";
 import "../style/_nav.scss";

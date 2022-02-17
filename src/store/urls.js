@@ -9,3 +9,6 @@ export const deleteSemestereUrl = "/semesteremoved";
 export const gradeCount = "/gradecount";
 export const authUrl = "/authentication";
 export const registerUrl = "/register";
+
+export const defaultGradeUrl = "/defaultgrade";
+export const userGradeUrl = "/userGrade";

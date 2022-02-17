@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Axios from "axios";
 import "../style/_signup.scss";
 //framer motion
 import { motion } from "framer-motion";
@@ -9,14 +9,41 @@ import { pageAnimationAlt } from "../animation";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { register } from "../store/auth";
+//reducer
+import { semesterWindow } from "../store/semesterWindow";
+import { courseWindow } from "../store/courseWindow";
+import { loadUserGrade } from "../store/gradeweights";
+import { preloaderToggleTrue, preloaderToggleFalse } from "../store/preloader";
 
 const Signup = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
+  const authenticated = useSelector(
+    (state) => state.entities.users.authenticated
+  );
   //useState
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+
+  //useEffects
+  useEffect(() => {
+    if (authenticated) {
+      if (usernameInput) {
+        dispatch(preloaderToggleTrue());
+        dispatch(semesterWindow());
+        dispatch(courseWindow());
+        dispatch(loadUserGrade({ usernameInput }));
+      }
+      console.log("called");
+      setTimeout(() => {
+        history.push("semesters");
+
+        dispatch(preloaderToggleFalse());
+      }, 500);
+    }
+  }, [authenticated]);
 
   const usernameInputHandler = (e) => {
     setUsernameInput(e.target.value);
@@ -33,6 +60,7 @@ const Signup = () => {
 
   const registerHandler = (e) => {
     e.preventDefault();
+    dispatch(preloaderToggleTrue());
     dispatch(register({ fname, lname, usernameInput, passwordInput }));
   };
 
@@ -84,10 +112,10 @@ const Signup = () => {
             />
           </div>
 
-          <p>Email</p>
+          <p>Username</p>
           <input
             type="text"
-            placeholder="Email"
+            placeholder="Username"
             value={usernameInput}
             onChange={usernameInputHandler}
             required

@@ -7,6 +7,8 @@ import { semesterGpa } from "../../util";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import { removesemester, semesterRemovedState } from "../../store/semesters";
+
+import { preloaderToggleTrue } from "../../store/preloader";
 const Semester = ({ allCourses, semester }) => {
   const history = useHistory();
   //redux-data
@@ -14,6 +16,7 @@ const Semester = ({ allCourses, semester }) => {
   //state
   const semesterClickHandler = (e) => {
     if (e.target.className === "menu" || e.target.className === "menuImg") {
+      dispatch(preloaderToggleTrue());
       dispatch(removesemester(semester.semester_id));
       dispatch(semesterRemovedState());
     } else {

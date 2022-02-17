@@ -6,11 +6,6 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
 //reducer
-import { semesterWindow } from "./store/semesterWindow";
-import { courseWindow } from "./store/courseWindow";
-import { loadcourses } from "./store/courses";
-import { login } from "./store/auth";
-import { loadsemesters } from "./store/semesters";
 import { preloader } from "./store/preloader";
 //redux setup
 import configureStore from "./store/configureStore";

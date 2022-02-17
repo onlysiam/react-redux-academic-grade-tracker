@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 //styles
-import "../../style/_allsemester.scss";
+import "../../style/_dashboard.scss";
 //components
 import Courses from "./Courses";
 import Semester from "./Semester";
@@ -23,21 +23,15 @@ import { semesterWindow } from "../../store/semesterWindow";
 import { courseWindow } from "../../store/courseWindow";
 import { loadcourses } from "../../store/courses";
 import { loadsemesters } from "../../store/semesters";
+import { loadUserGrade } from "../../store/gradeweights";
 import {
   preloaderToggleTrue,
   preloaderToggleFalse,
 } from "../../store/preloader";
 
-const AllSemester = ({ gradeCountWindow }) => {
+const Dashboard = ({ gradeCountWindow }) => {
   //fetching data
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (courses.length > 0) {
-      dispatch(cgpaCounted(courses));
-      dispatch(creditCounted(courses));
-      dispatch(preloaderToggleFalse());
-    }
-  });
   const courses = useSelector((state) => state.entities.courses.list);
   const semestersTemp = useSelector((state) => state.entities.semesters.list);
   const semesters = [...semestersTemp].reverse();
@@ -45,6 +39,26 @@ const AllSemester = ({ gradeCountWindow }) => {
   const userList = useSelector((state) => state.entities.users.list);
   const loader = useSelector((state) => state.loader.semesterWindow);
   const semesterWindowState = loader.length > 0 ? loader[0].state : "";
+
+  //get current url
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[3];
+  const pathIdindex = semesters.findIndex(
+    (semester) => semester.semester_id === parseInt(pathId)
+  );
+
+  //useEffects
+
+  useEffect(() => {
+    if (courses.length > 0 || semestersTemp.length > 0) {
+      dispatch(cgpaCounted(courses));
+      dispatch(creditCounted(courses));
+      dispatch(preloaderToggleFalse());
+    }
+  }, [courses]);
+  useEffect(() => {
+    dispatch(preloaderToggleFalse());
+  }, [semesters]);
   useEffect(() => {
     if (
       !courses.length > 0 &&
@@ -60,15 +74,10 @@ const AllSemester = ({ gradeCountWindow }) => {
       dispatch(courseWindow());
       dispatch(loadcourses({ usernameInput }));
       dispatch(loadsemesters({ usernameInput }));
+      dispatch(loadUserGrade({ usernameInput }));
       console.log("called from allsemesters");
     }
   }, []);
-  //get current url
-  const location = useLocation();
-  const pathId = location.pathname.split("/")[3];
-  const pathIdindex = semesters.findIndex(
-    (semester) => semester.semester_id === parseInt(pathId)
-  );
 
   //handlers
   const semesterWindowHandler = () => {
@@ -80,7 +89,6 @@ const AllSemester = ({ gradeCountWindow }) => {
       dispatch(semesterWindowToggle());
     }
   };
-  //state
   return (
     <motion.div
       className="allSemesterContainer"
@@ -131,7 +139,11 @@ const AllSemester = ({ gradeCountWindow }) => {
                 : "active-addCourseOverlay"
             }`}
           >
-            <div>{semesterWindowState ? <Addsemester /> : null}</div>
+            <div>
+              {semesterWindowState ? (
+                <Addsemester username={userList[0].username} />
+              ) : null}
+            </div>
           </div>
           <div className="semesters">
             {!pathId && semesters.length > 0
@@ -149,4 +161,4 @@ const AllSemester = ({ gradeCountWindow }) => {
     </motion.div>
   );
 };
-export default AllSemester;
+export default Dashboard;

@@ -6,36 +6,16 @@ import Classresult from "./Classresult";
 //animation
 import { motion } from "framer-motion";
 import { pageAnimation } from "../../animation";
-const Result = ({
-  calculatorInput,
-  setCalculatorInput,
-  renderCount,
-  setRenderCount,
-  setResultPublished,
-  resultPublished,
-  checkReload,
-  setCheckReload,
-}) => {
-  //states
-  const [tmpCalculatorInput, setTmpCalculatorInput] = useState([]);
-  const [tmpRenderCount, setTmpRenderCount] = useState("");
-  const [tmpCgpaInput, setTmpCgpaInput] = useState("");
+//redux
+import { useSelector } from "react-redux";
+const Result = ({ calculatorInput }) => {
   //handlers
   //useEffect
-  useEffect(() => {
-    setTmpRenderCount(calculatorInput.length);
-    const calculatorInfo = localStorage.getItem("calculatorInput");
-    setTmpCalculatorInput(JSON.parse(calculatorInfo));
-    setResultPublished(true);
-    setCheckReload(true);
-  }, []);
-  useEffect(() => {
-    calculatorInput.map((calculatorInfo, i) => {
-      if (i === tmpRenderCount - 1) {
-        setTmpCgpaInput(calculatorInfo);
-      }
-    });
-  }, [tmpRenderCount]);
+  const resultList = useSelector(
+    (state) => state.entities.calculator.resultList
+  );
+  const result = resultList && resultList[0];
+  console.log(result);
   return (
     <motion.div
       exit="exit"
@@ -47,10 +27,10 @@ const Result = ({
       <div className="calculator-body">
         <div className="pCgpaCredit">
           <div className="pCredit">
-            <p>Previous Credit: {tmpCgpaInput.previousCredit}</p>
+            <p>Previous Credit: {result.previousCredit}</p>
           </div>
           <div className="pCgpa">
-            <p>Previous CGPA: {tmpCgpaInput.previousCgpa}</p>
+            <p>Previous CGPA: {result.previousCgpa}</p>
           </div>
         </div>
         <div className="classcgc">
@@ -60,22 +40,14 @@ const Result = ({
             <p>Credits</p>
           </div>
           <div className="courses">
-            {tmpCalculatorInput.map((count, i) => (
-              <Classresult
-                calculatorInput={calculatorInput}
-                setCalculatorInput={setCalculatorInput}
-                resultPublished={resultPublished}
-                setResultPublished={setResultPublished}
-                checkReload={checkReload}
-                setCheckReload={setCheckReload}
-                id={i}
-              />
+            {calculatorInput.map((count, i) => (
+              <Classresult calculatorInput={calculatorInput} id={i} />
             ))}
           </div>
         </div>
         <div className="finalCgpa">
-          <p>Semester GPA: {tmpCgpaInput.semesterGpa}</p>
-          <p>Cumulative GPA: {tmpCgpaInput.currentCgpa}</p>
+          <p>Semester GPA: {result.semesterGpa}</p>
+          <p>Cumulative GPA: {result.currentCgpa}</p>
         </div>
       </div>
 

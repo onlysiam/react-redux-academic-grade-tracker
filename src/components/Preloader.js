@@ -34,10 +34,10 @@ const Body = styled.div`
     animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
   }
   .lds-ripple div:nth-child(2) {
-    animation-delay: -0.5s;
+    animation-delay: 1s;
   }
   .lds-ripple div:nth-child(3) {
-    animation-delay: -2.5s;
+    animation-delay: -1s;
   }
   @keyframes lds-ripple {
     0% {

@@ -5,23 +5,23 @@ import "../../style/_addcourse.scss";
 import { motion } from "framer-motion";
 import { addCourseAnimation } from "../../animation";
 //data
-import gradeWeight from "../../util";
+
 //redux
 import { useDispatch } from "react-redux";
 import { addcourse } from "../../store/courses";
-import { courseWindow, courseWindowToggle } from "../../store/courseWindow";
-const Addcourse = ({ semester }) => {
+import { courseWindowToggle } from "../../store/courseWindow";
+import { preloaderToggleTrue } from "../../store/preloader";
+const Addcourse = ({ username, semester, gradeWeights }) => {
   const dispatch = useDispatch();
   //states
   const [checkGradeInput, setCheckGradeInput] = useState(false);
   const [checkCreditInput, setCheckCreditInput] = useState(false);
 
-  const [gradeWeights, setGradeweights] = useState(gradeWeight);
-
   const [course, setCourse] = useState("");
   const [grade, setGrade] = useState("A");
   const [gradePoint, setGradePoint] = useState(4.0);
   const [credit, setCredit] = useState(3.0);
+  const [gradeId, setGradeId] = useState(2);
 
   const inputElement = useRef(null);
   useEffect(() => {
@@ -34,9 +34,10 @@ const Addcourse = ({ semester }) => {
     setGrade(e.target.value);
     setCheckGradeInput(true);
     const gradePoints = gradeWeights.filter(
-      (grade) => grade.name === e.target.value
+      (grade) => grade.grade_name === e.target.value
     );
-    setGradePoint(gradePoints[0].value);
+    setGradePoint(gradePoints[0].grade_point);
+    setGradeId(gradePoints[0].grade_id);
   };
   const inputHandlerName = (e) => {
     setCourse(e.target.value.toUpperCase());
@@ -47,15 +48,21 @@ const Addcourse = ({ semester }) => {
   };
   const addCourseHandler = (e) => {
     e.preventDefault();
+    dispatch(preloaderToggleTrue());
     dispatch(
-      addcourse({ course, credit, grade, gradePoint, semester, user: "siam" })
+      addcourse({
+        course,
+        credit,
+        grade,
+        gradePoint,
+        gradeId,
+        semester,
+        username,
+      })
     );
     dispatch(courseWindowToggle());
   };
-  const cancelCourseHandler = (e) => {
-    e.preventDefault();
-    dispatch(courseWindowToggle());
-  };
+
   return (
     <motion.div
       exit="exit"

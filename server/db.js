@@ -70,6 +70,56 @@ app.post("/api/authentication", (req, res) => {
   );
 });
 
+//default grade weights load
+app.get("/api/defaultgrade", (req, res) => {
+  db.query("SELECT * FROM default_grade_weights", (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ err: err });
+    }
+    if (result.length > 0) {
+      console.log(result);
+      res.send(result);
+    } else {
+      console.log("No Data Found");
+      res.send(result);
+    }
+  });
+});
+
+//users grade weights load
+app.post("/api/userGrade", (req, res) => {
+  console.log(req.body);
+  const username = req.body.usernameInput;
+  db.query(
+    "SELECT * FROM grade_weights WHERE username LIKE ?",
+    [username],
+    (err, result) => {
+      if (err) {
+        console.log("err:", err);
+      }
+      if (result.length > 0) {
+        console.log("poop");
+        res.send(result);
+      }
+      if (result.length === 0) {
+        db.query("SELECT * FROM default_grade_weights", (err, result) => {
+          if (err) {
+            console.log(err);
+            res.send({ err: err });
+          }
+          if (result.length > 0) {
+            console.log(result);
+            res.send(result);
+          } else {
+            console.log("No Data Found");
+            res.send(result);
+          }
+        });
+      }
+    }
+  );
+});
 //course load
 app.post("/api/courses", (req, res) => {
   console.log(req.body);
@@ -83,7 +133,6 @@ app.post("/api/courses", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(result);
         res.send(result);
       } else {
         console.log("No Data Found");
@@ -99,16 +148,18 @@ app.post("/api/addcourses", (req, res) => {
   const credit_hour = req.body.credit;
   const grade_letter = req.body.grade;
   const grade_point = req.body.gradePoint;
+  const grade_id = req.body.gradeId;
   const semester_id = req.body.semester;
   const user_id = req.body.user;
   const active = 1;
   db.query(
-    "INSERT INTO courses (course_name, credit_hour, grade_letter, grade_point, semester_id, user_id, active) VALUES (?,?,?,?,?,?,?)",
+    "INSERT INTO courses (course_name, credit_hour, grade_letter, grade_point, grade_id, semester_id, user_id, active) VALUES (?,?,?,?,?,?,?)",
     [
       course_name,
       credit_hour,
       grade_letter,
       grade_point,
+      grade_id,
       semester_id,
       user_id,
       active,
@@ -119,7 +170,6 @@ app.post("/api/addcourses", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(result);
         res.send(result);
       } else {
         const course_id = result.insertId;
@@ -129,6 +179,7 @@ app.post("/api/addcourses", (req, res) => {
           credit_hour,
           grade_letter,
           grade_point,
+          grade_id,
           semester_id,
           user_id,
           active,
@@ -193,7 +244,6 @@ app.post("/api/semesters", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(result);
         res.send(result);
       } else {
         console.log("No Data Found");
@@ -281,4 +331,7 @@ app.patch("/api/semesters/:semesterId", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "index.html"));
 });
-app.listen();
+
+app.listen(3001, () => {
+  console.log("running server");
+});

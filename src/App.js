@@ -1,25 +1,18 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 //router
 import { Switch, Route, useLocation } from "react-router-dom";
 //animation
 import { AnimatePresence } from "framer-motion";
-//import util
-import data from "./util";
+
 //components
 import Nav from "./components/Nav";
 import Home from "./components/Home";
-import AllSemester from "./components/coursebank/AllSemester";
-import Courses from "./components/coursebank/Courses";
-import Coursedetails from "./components/coursebank/Coursedetails";
+import Dashboard from "./components/coursebank/Dashboard";
 
 import Calculator from "./components/calculator/Calculator";
-import Result from "./components/calculator/Result";
 import Settings from "./components/Settings";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
 
 import Welcomepage from "./components/Welcomepage";
-import Grades from "./components/calculator/Grades";
 //css import
 import "./style/app.scss";
 //redux
@@ -31,16 +24,7 @@ function App() {
 
   const location = useLocation();
   //states
-
-  const [gradeWeight, setGradeWeight] = useState([]);
-  const [defaultGradeWeight, setDefaultGradeWeight] = useState(data());
-
-  const [calculatorInput, setCalculatorInput] = useState([]);
   const [renderCount, setRenderCount] = useState(["1", "", ""]);
-  const [calculatorCgpaExists, setCalculatorCgpaExists] = useState(false);
-
-  const [checkReload, setCheckReload] = useState(false);
-  const [resultPublished, setResultPublished] = useState(false);
 
   const [gradeCountWindow, setgradeCountWindow] = useState(false);
   //useEffect
@@ -56,9 +40,6 @@ function App() {
       />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          {/* <Route path="/" exact>
-            <Preloader />
-          </Route> */}
           <Route path="/" exact>
             <Welcomepage />
           </Route>
@@ -66,40 +47,15 @@ function App() {
             <Home />
           </Route>
           <Route path={["/semesters/:name/:id", "/semesters"]}>
-            <AllSemester
+            <Dashboard
               gradeCountWindow={gradeCountWindow}
               setgradeCountWindow={setgradeCountWindow}
             />
           </Route>
-          <Route path="/calculator" exact>
+          <Route path={["/calculator/result", "/calculator"]} exact>
             <Calculator
-              defaultGradeWeight={defaultGradeWeight}
-              setDefaultGradeWeight={setDefaultGradeWeight}
-              gradeWeight={gradeWeight}
-              setGradeWeight={setGradeWeight}
-              calculatorInput={calculatorInput}
-              setCalculatorInput={setCalculatorInput}
               renderCount={renderCount}
               setRenderCount={setRenderCount}
-              calculatorCgpaExists={calculatorCgpaExists}
-              setCalculatorCgpaExists={setCalculatorCgpaExists}
-              resultPublished={resultPublished}
-              setResultPublished={setResultPublished}
-              checkReload={checkReload}
-              setCheckReload={setCheckReload}
-            />
-          </Route>
-          <Route path="/calculator/result" exact>
-            <Result
-              calculatorInput={calculatorInput}
-              setCalculatorInput={setCalculatorInput}
-              renderCount={renderCount}
-              setRenderCount={setRenderCount}
-              calculatorCgpaExists={calculatorCgpaExists}
-              resultPublished={resultPublished}
-              setResultPublished={setResultPublished}
-              checkReload={checkReload}
-              setCheckReload={setCheckReload}
             />
           </Route>
           <Route path="/settings" exact>

@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let lastId = 0;
-
 const slice = createSlice({
   name: "users",
   initialState: {
@@ -18,6 +16,7 @@ const slice = createSlice({
     },
     userLogout: (users, action) => {
       users.authenticated = false;
+      users.list = [];
     },
     userRemoved: (users, action) => {
       users.list.filter((user) => user.id !== action.payload.id);

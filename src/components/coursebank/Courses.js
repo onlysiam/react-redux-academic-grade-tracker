@@ -25,8 +25,11 @@ const Courses = ({
   const dispatch = useDispatch();
 
   //fetching data
+
+  const userList = useSelector((state) => state.entities.users.list);
   const semestersList = useSelector((state) => state.entities.semesters.list);
   const loader = useSelector((state) => state.loader.courseWindow);
+  const gradeWeights = useSelector((state) => state.entities.grades[0]);
   const semesterGpa =
     semestersList.length > 0 ? semestersList[pathIdindex].semester_gpa : 0;
   const semesterCredits =
@@ -65,7 +68,7 @@ const Courses = ({
   };
   const onHeaderClick = (e) => {
     e.preventDefault();
-    if (e.target.className === "addCourse") {
+    if (e.target.className === "addCourseOverlay addCourseOverlay") {
       dispatch(courseWindowToggle());
     }
   };
@@ -103,7 +106,11 @@ const Courses = ({
         >
           <div>
             {courseWindowState ? (
-              <Addcourse semester={semester[0].semester_id} />
+              <Addcourse
+                username={userList[0].username}
+                semester={semester[0].semester_id}
+                gradeWeights={gradeWeights}
+              />
             ) : null}
           </div>
         </div>

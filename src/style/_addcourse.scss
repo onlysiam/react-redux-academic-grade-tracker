@@ -1,27 +1,16 @@
 .addCourse {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  align-items: center;
-  overflow: hidden;
   form {
-    position: relative;
     display: flex;
-    padding: 15px;
-    margin-top: -8rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    padding: 15px;
     background: rgb(245, 245, 245);
-    height: 16rem;
+    height: 20rem;
     width: 30rem;
     border-radius: 10px;
-
     h1 {
       font-size: 1.5rem;
-      top: 0;
-      left: 0;
-      padding-bottom: 20px;
     }
     .courseName {
       input {
@@ -44,17 +33,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 110%;
+      width: 15rem;
       p {
-        padding-top: 15px;
-        padding-bottom: 5px;
+        margin-bottom: 10px;
       }
       .credithour {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 55%;
-        flex-direction: column;
         .creditInput {
           color: rgb(167, 167, 167);
         }
@@ -63,11 +46,10 @@
         }
         input {
           width: 5rem;
-          border: none;
           background: transparent;
           padding: 5px;
-          border-radius: 0px;
           font-size: 1.2rem;
+          border: none;
           border-bottom: 1px solid black;
           text-align: center;
           transition: 0.2s;
@@ -80,11 +62,6 @@
         }
       }
       .gradeinput {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 55%;
         select {
           height: 2rem;
           padding: 5px;
@@ -115,13 +92,12 @@
       }
     }
     button {
-      width: 5rem;
+      width: 6rem;
       height: 2rem;
       font-size: 1.2rem;
-      font-weight: Bold;
       color: rgb(61, 61, 61);
       border: 1px solid rgba(67, 168, 226, 0.568);
-      border-radius: 10px;
+      border-radius: 5px;
       background: rgba(215, 245, 253, 0.945);
       cursor: pointer;
       transition: 0.5s ease;
@@ -158,69 +134,113 @@
   }
 }
 @media screen and (max-width: 500px) {
-  .addCourse {
-    height: 100vh;
-    form {
-      padding: 15px;
-      margin-top: -10rem;
-
-      height: 17rem;
-      width: 17rem;
-      border-radius: 10px;
-
-      h1 {
-        position: absolute;
-        font-size: 1.5rem;
-        top: 0;
-        left: 0;
-        padding: 15px;
-      }
-      .courseName {
-        input {
-          width: 15rem;
-          border-radius: 0px;
-          font-size: 1.2rem;
-          padding-bottom: 5px;
-        }
-      }
-      .creditGrade {
-        width: 110%;
-        p {
-          padding-top: 15px;
-          padding-bottom: 5px;
-        }
-        .credithour {
-          width: 55%;
-
-          input {
-            width: 5rem;
-            padding: 5px;
-            border-radius: 0px;
-            font-size: 1.2rem;
-          }
-        }
-        .gradeinput {
-          width: 55%;
-          select {
-            height: 2rem;
-            padding: 5px;
-            width: 2rem;
-            font-size: 1rem;
-            border-radius: 0;
-            border-bottom: 1px solid rgb(0, 0, 0);
-          }
-        }
-      }
-      button {
-        position: absolute;
-        width: 5rem;
-        height: 2rem;
-        margin-top: 6rem;
-        margin-left: 5rem;
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    background: rgb(245, 245, 245);
+    height: 20rem;
+    width: 30rem;
+    border-radius: 10px;
+    h1 {
+      font-size: 1.5rem;
+    }
+    .courseName {
+      input {
+        width: 15rem;
+        border: none;
+        background: transparent;
+        border-radius: 0px;
         font-size: 1.2rem;
-
-        border-radius: 10px;
+        padding-bottom: 5px;
+        text-align: center;
+        border-bottom: 1px solid black;
+        transition: 0.2s;
       }
+      input:focus {
+        outline: none;
+        border-bottom: 1px solid rgba(67, 242, 255, 0.671);
+      }
+    }
+    .creditGrade {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 15rem;
+      p {
+        margin-bottom: 10px;
+      }
+      .credithour {
+        .creditInput {
+          color: rgb(167, 167, 167);
+        }
+        .active-creditInput {
+          color: black;
+        }
+        input {
+          width: 5rem;
+          background: transparent;
+          padding: 5px;
+          font-size: 1.2rem;
+          border: none;
+          border-bottom: 1px solid black;
+          text-align: center;
+          transition: 0.2s;
+        }
+        input:focus {
+          outline: none;
+
+          color: black;
+          border-bottom: 1px solid rgba(67, 242, 255, 0.671);
+        }
+      }
+      .gradeinput {
+        select {
+          height: 2rem;
+          padding: 5px;
+          width: 2rem;
+          font-size: 1rem;
+          border: none;
+          border-radius: 0;
+          border-bottom: 1px solid rgb(0, 0, 0);
+          background: transparent;
+          text-align: center;
+          text-align-last: center;
+          -moz-text-align-last: center;
+          text-align: -webkit-center;
+          -webkit-appearance: none;
+          transition: 0.2s;
+        }
+
+        select:focus {
+          outline: none;
+          border-bottom: 1px solid rgba(67, 242, 255, 0.671);
+        }
+        .select {
+          color: rgb(167, 167, 167);
+        }
+        .active-select {
+          color: black;
+        }
+      }
+    }
+    button {
+      width: 6rem;
+      height: 2rem;
+      font-size: 1.2rem;
+      color: rgb(61, 61, 61);
+      border: 1px solid rgba(67, 168, 226, 0.568);
+      border-radius: 5px;
+      background: rgba(215, 245, 253, 0.945);
+      cursor: pointer;
+      transition: 0.5s ease;
+      outline: none;
+    }
+    button:hover {
+      color: white;
+      background: rgba(65, 122, 138, 0.945);
     }
   }
 }

@@ -13,6 +13,7 @@ import { semesterWindow } from "../store/semesterWindow";
 import { courseWindow } from "../store/courseWindow";
 import { loadcourses } from "../store/courses";
 import { loadsemesters } from "../store/semesters";
+import { loadUserGrade } from "../store/gradeweights";
 import { preloaderToggleTrue, preloaderToggleFalse } from "../store/preloader";
 const Login = () => {
   const history = useHistory();
@@ -57,6 +58,7 @@ const Login = () => {
         dispatch(courseWindow());
         dispatch(loadcourses({ usernameInput }));
         dispatch(loadsemesters({ usernameInput }));
+        dispatch(loadUserGrade({ usernameInput }));
       }
       console.log("called");
       setTimeout(() => {
@@ -96,10 +98,10 @@ const Login = () => {
           animate="show"
           onSubmit={login}
         >
-          <p>Username/Email</p>
+          <p>Username</p>
           <input
             type="text"
-            placeholder="Email or Username"
+            placeholder="Username"
             value={usernameInput}
             onChange={usernameInputHandler}
             required
